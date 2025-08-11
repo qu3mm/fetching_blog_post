@@ -1,18 +1,10 @@
 import { notFound } from "next/navigation";
 import React from "react";
 
-type postParams = {
-  params: {
-    postID: string;
-  };
-};
-
-
-const page = async ({ params }: postParams) => {
-  const param = await params;
-  const res = await fetch(`https://dummyjson.com/posts/${param.postID}`);
+const page = async ({ params }: { params: Promise<{ postID: string }> }) => {
+  const { postID } = await params;
+  const res = await fetch(`https://dummyjson.com/posts/${postID}`);
   if (!res.ok) {
-    // throw new Error("Failed to fetch post");
     notFound();
   }
   const post = await res.json();
