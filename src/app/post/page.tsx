@@ -1,3 +1,4 @@
+import { ThumbsDownIcon, ThumbsUpIcon } from "lucide-react";
 import Link from "next/link";
 
 type Post = {
@@ -12,6 +13,8 @@ type Post = {
     };
   }[];
 };
+
+
 
 const page = async () => {
   const res = await fetch("https://dummyjson.com/posts");
@@ -29,25 +32,20 @@ const page = async () => {
         {data.posts.map((post) => (
           <div
             key={post.id}
-            className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300"
+            className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 max-h-[350px] flex flex-col justify-between hover:shadow-2xl transition-shadow duration-300"
           >
             <div>
-              <h2 className="tex    t-xl font-semibold mb-3 text-blue-800">
+              <h2 className=" font-semibold mb-3 text-blue-800">
                 {post.title}
               </h2>
-              <p className="text-gray-600 mb-6">{post.body}</p>
+                <p className="text-gray-600 text-sm mb-6 line-clamp-6 ">
+                  {post.body}
+                </p>
             </div>
             <div className="flex justify-between items-center pt-4 border-t border-gray-100 text-sm">
               <div className="flex items-center gap-4">
                 <span className="flex items-center gap-1 text-green-600 font-medium">
-                  <svg
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="inline"
-                  >
-                    <circle cx="8" cy="8" r="8" />
-                  </svg>
+                    <ThumbsUpIcon className="w-4 h-4" />
                   {post.reactions.likes >= 1000
                     ? `${(post.reactions.likes / 1000)
                         .toFixed(1)
@@ -56,14 +54,7 @@ const page = async () => {
                   Likes
                 </span>
                 <span className="flex items-center gap-1 text-red-500 font-medium">
-                  <svg
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    className="inline"
-                  >
-                    <rect width="16" height="16" rx="4" />
-                  </svg>
+                 <ThumbsDownIcon className="w-4 h-4" />
                   {post.reactions.dislikes} Dislikes
                 </span>
               </div>

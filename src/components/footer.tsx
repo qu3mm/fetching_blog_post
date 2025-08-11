@@ -1,14 +1,12 @@
+"use client";
+import React from 'react';
 
-const footer = () => {
+const Footer = () => {
   return (
-    <div>
-        <footer className="flex justify-center bg-gray-800 text-white p-4 bottom-0 fixed w-full">
-            <p className="text-sm">© 2023 My Next.js App. All rights reserved.</p>
-        </footer>
-    </div>
+    <footer className="flex justify-center bg-gray-800 text-white p-4">
+      <p className="text-sm">© 2023 My Next.js App. All rights reserved.</p>
+    </footer>
+  );
+};
 
-
-  )
-}
-
-export default footer
+export default Footer;

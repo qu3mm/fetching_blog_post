@@ -1,16 +1,23 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import path from "path";
 
 const header = () => {
+    const pathname = usePathname();
+    console.log(pathname)
+ 
   return (
     <div>
-      <header className="flex justify-center bg-gray-800 text-white p-4">
+      <header className="flex justify-center  p-4 border-b-1 border-gray-200 bg-white  sticky top-0 w-full ">
         <nav className="mt-2">
-          <ul className="flex items space-x-4">
+          <ul className="flex items space-x-4 text-sm font-medium text-gray-700">
             <li>
-              <Link href="/">Home</Link>
+              <Link className={pathname == '/' ? "font-bold": ""} href="/">HOME</Link>
             </li>
             <li>
-              <Link href="/post">post</Link>
+              <Link className={pathname == '/post' ? "font-bold": ""} href="/post">POST</Link>
             </li>
           </ul>
         </nav>
