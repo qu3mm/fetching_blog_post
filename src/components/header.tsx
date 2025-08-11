@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import path from "path";
 
-const header = () => {
+const Header = () => {
     const pathname = usePathname();
     console.log(pathname)
  
@@ -26,4 +25,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;
