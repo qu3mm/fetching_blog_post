@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -66,6 +67,9 @@ const page = async ({ params }: { params: Promise<{ postID: string }> }) => {
             </svg>
             {post.reactions.dislikes} Dislikes
           </span>
+          <Link href="../" className="text-blue-600 hover:underline">
+            Back to Posts
+          </Link>
         </div>
       </div>
     </div>
