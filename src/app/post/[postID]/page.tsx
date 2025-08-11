@@ -7,25 +7,13 @@ type postParams = {
   };
 };
 
-type Post = {
-  posts: {
-    id: number;
-    title: string;
-    body: string;
-    tags?: string[] | undefined;
-    reactions: {
-      likes: number;
-      dislikes: number;
-    };
-  }[];
-};
 
 const page = async ({ params }: postParams) => {
-    const param = await params;
+  const param = await params;
   const res = await fetch(`https://dummyjson.com/posts/${param.postID}`);
   if (!res.ok) {
     // throw new Error("Failed to fetch post");
-    notFound()
+    notFound();
   }
   const post = await res.json();
   return (
@@ -39,14 +27,17 @@ const page = async ({ params }: postParams) => {
         </h2>
         <p className="text-gray-600 mb-6">{post.body}</p>
         <div className="mb-4">
-          <h3 className="text-md font-medium text-gray-700 mb-2">Post Details</h3>
+          <h3 className="text-md font-medium text-gray-700 mb-2">
+            Post Details
+          </h3>
           <ul className="list-disc list-inside text-gray-500">
             <li>
               <span className="font-semibold">Post ID:</span> {post.id}
             </li>
             {post.tags && post.tags.length > 0 && (
               <li>
-                <span className="font-semibold">Tags:</span> {post.tags.join(", ")}
+                <span className="font-semibold">Tags:</span>{" "}
+                {post.tags.join(", ")}
               </li>
             )}
             <li>
@@ -58,7 +49,8 @@ const page = async ({ params }: postParams) => {
                 : post.reactions.likes}
             </li>
             <li>
-              <span className="font-semibold">Dislikes:</span> {post.reactions.dislikes}
+              <span className="font-semibold">Dislikes:</span>{" "}
+              {post.reactions.dislikes}
             </li>
           </ul>
         </div>
