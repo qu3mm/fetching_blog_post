@@ -2,7 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
-const page = async ({ params }: { params: Promise<{ postID: string }> }) => {
+type ParamsProps = {
+  params: Promise<{ postID: string }>;
+};
+
+
+
+const page = async ({ params }: ParamsProps) => {
   const { postID } = await params;
   const res = await fetch(`https://dummyjson.com/posts/${postID}`);
   if (!res.ok) {
